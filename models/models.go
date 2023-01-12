@@ -1,7 +1,7 @@
 package models
 
-type Personalidades struct {
-	Id       int
-	Nome     string
-	Historia string
+type Personalidade struct {
+	//gorm.Model
+	Nome     string `json:"nome"`
+	Historia string `json:"historia"`
 }
