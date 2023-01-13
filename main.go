@@ -11,8 +11,16 @@ import (
 
 func main() {
 	models.Personalidades = []models.Personalidade{
-		{Nome: "Gabriel Newton", Historia: "Desenvolvedor Pleno"},
-		{Nome: "Deise Lima", Historia: "Esposa do Gabriel"},
+		{
+			Id:       1,
+			Nome:     "Gabriel Newton",
+			Historia: "Desenvolvedor Pleno",
+		},
+		{
+			Id:       2,
+			Nome:     "Deise Lima",
+			Historia: "Esposa do Gabriel",
+		},
 	}
 
 	fmt.Println("Iniciando a nossa API")
