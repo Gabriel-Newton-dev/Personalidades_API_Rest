@@ -4,9 +4,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 
-	"github.com/Gabriel-Newton-dev/Personalidades_API_Rest/database"
 	"github.com/Gabriel-Newton-dev/Personalidades_API_Rest/models"
+	"github.com/gorilla/mux"
 )
 
 func Home(w http.ResponseWriter, r *http.Request) {
@@ -14,7 +15,17 @@ func Home(w http.ResponseWriter, r *http.Request) {
 }
 
 func TodasPersonalidades(w http.ResponseWriter, r *http.Request) {
-	var personalidades []models.Personalidade
-	database.DB.Find(&personalidades)
-	json.NewEncoder(w).Encode(personalidades)
+	json.NewEncoder(w).Encode(models.Personalidades)
+}
+
+func BuscarPorId(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	id := vars["id"]
+
+	for _, personalidade := range models.Personalidades {
+		if strconv.Itoa(personalidade.Id) == id {
+			json.NewEncoder(w).Encode(personalidade)
+		}
+	}
+
 }
